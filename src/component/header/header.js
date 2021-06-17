@@ -50,9 +50,10 @@ export default function Header({ addTodo }) {
                     value={todo.task}
                     onChange={textChangeState}
                     id="standard-basic"
-                    label="Enter Todo" />
+                    label="Enter Todo"
+                    data-testid="new-item-input" />
 
-                <Button type="submit" variant="contained" color="primary">
+                <Button type="submit" variant="contained" color="primary" data-testid="new-item-button">
                     Add Todo
             </Button>
             </form>

@@ -12,13 +12,18 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   function addTodo(todo) {
-    setTodos([todo, ...todos]);
+    // need to prevent adding duplicate items
+    let found = todos.find(item => item.task === todo.task)
+    if(found)
+      alert("Cannot add duplicate item")
+    else 
+      setTodos([todo, ...todos]);
   }
 
   function toggleComplete(id) {
     setTodos(
       todos.map(todo => {
-        if (todo.id == id) {
+        if (todo.id === id) {
           return {
             ...todo,
             completed: !todo.completed
