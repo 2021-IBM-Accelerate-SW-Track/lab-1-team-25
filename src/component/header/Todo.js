@@ -1,6 +1,24 @@
 import React from "react";
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import { withStyles } from "@material-ui/core/styles";
+
+
+// Want to bring edit button closer to delete - this needs work
+const ListItemWithWiderSecondaryAction = withStyles({
+    secondaryAction: {
+      paddingRight: 96
+    }
+  })(ListItem);
 
 function Todo({ todo, toggleComplete, removeTodo }) {
+
     function clickCheckbox() {
         toggleComplete(todo.id);
     }
@@ -11,19 +29,29 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 
     let today = new Date(todo.id);
     return (
-        <div style={{ display: "flex", textAlign: "left", justifyContent: "center" }}>
-            <input type="checkbox" onClick={clickCheckbox} />
-            <li
-                style={{
-                    color: "black",
-                    textDecoration: todo.completed ? "line-through" : null
-                }}
-            >
-                {todo.task}--
-                {today.toLocaleTimeString()}--{today.toDateString()} </li>
-            <button onClick={handleRemove}>X</button>
-            <button >Edit</button>
-        </div>
+        <ListItem divider="true">
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                onClick={clickCheckbox}
+                disableRipple
+              />
+            </ListItemIcon>
+            <ListItemText
+                primary={todo.task}
+                secondary={today.toLocaleTimeString() + " -- " + today.toDateString()}
+            />
+            <ListItemWithWiderSecondaryAction>
+                <IconButton edge="end" aria-label="edit">
+                    <EditIcon />
+                </IconButton>
+            </ListItemWithWiderSecondaryAction>
+            <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete" onClick={handleRemove}>
+                    <DeleteIcon />
+                </IconButton>
+            </ListItemSecondaryAction>
+        </ListItem>
     );
 }
 
