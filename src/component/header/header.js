@@ -31,8 +31,8 @@ export default function Header({ addTodo }) {
     return (
 
         <div>
-            <div style={{ fontSize: 50 }}>
-                2021 IBM Accelerate Todo List
+            <div style={{ fontSize: 30 }}>
+                2021 IBM Accelerate Group 25 Todo List
             </div>
 
 

@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function TodoList({ todos, toggleComplete, removeTodo }) {
+function TodoList({ todos, toggleComplete, removeTodo, editTodo }) {
     const classes = useStyles();
     return (
         <List className={classes.root}>
             {todos.map(todo => (
-                <Todo key={todo.id} todo={todo} toggleComplete={toggleComplete} removeTodo={removeTodo} />
+                <Todo key={todo.id} todo={todo} toggleComplete={toggleComplete} removeTodo={removeTodo} editTodo={editTodo} />
             ))}
         </List>
     );
