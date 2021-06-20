@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import TodoList from "./component/header/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  var [todos, setTodos] = useState([]);
 
   function addTodo(todo) {
     // need to prevent adding duplicate items
@@ -38,6 +38,17 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
+  function editTodo(str, id) {
+    todos = todos.filter(todo => todo.id !== id);
+    var item = {
+      id: Date.now(),
+      task: str,
+      completed: false
+    };
+      addTodo(item); 
+    
+  }
+
   return (
 
     <div className="App">
@@ -46,6 +57,7 @@ function App() {
         todos={todos}
         toggleComplete={toggleComplete}
         removeTodo={deleteTodo}
+        editTodo={editTodo}
       />
 
 

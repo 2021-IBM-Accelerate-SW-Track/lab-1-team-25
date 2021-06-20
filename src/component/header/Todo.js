@@ -13,11 +13,12 @@ import { withStyles } from "@material-ui/core/styles";
 // Want to bring edit button closer to delete - this needs work
 const ListItemWithWiderSecondaryAction = withStyles({
     secondaryAction: {
-      paddingRight: 96
+      paddingRight: 96,
+      
     }
   })(ListItem);
 
-function Todo({ todo, toggleComplete, removeTodo }) {
+function Todo({ todo, toggleComplete, removeTodo, editTodo}) {
 
     function clickCheckbox() {
         toggleComplete(todo.id);
@@ -25,6 +26,11 @@ function Todo({ todo, toggleComplete, removeTodo }) {
 
     function handleRemove() {
         removeTodo(todo.id);
+    }
+
+    function handleEdit() {
+        var str = window.prompt("Update task: ");
+        editTodo(str, todo.id);
     }
 
     let today = new Date(todo.id);
@@ -42,7 +48,7 @@ function Todo({ todo, toggleComplete, removeTodo }) {
                 secondary={today.toLocaleTimeString() + " -- " + today.toDateString()}
             />
             <ListItemWithWiderSecondaryAction>
-                <IconButton edge="end" aria-label="edit">
+                <IconButton edge="end" aria-label="edit" onClick={handleEdit}>
                     <EditIcon />
                 </IconButton>
             </ListItemWithWiderSecondaryAction>
