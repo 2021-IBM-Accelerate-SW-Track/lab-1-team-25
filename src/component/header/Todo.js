@@ -30,7 +30,8 @@ function Todo({ todo, toggleComplete, removeTodo, editTodo}) {
 
     function handleEdit() {
         var str = window.prompt("Update task: ");
-        editTodo(str, todo.id);
+        if(str)
+            editTodo(str, todo.id);
     }
 
     let today = new Date(todo.id);
