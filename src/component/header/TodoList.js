@@ -6,11 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        left: 450,
+        left: '20em',
         maxWidth: 600,
         backgroundColor: theme.palette.background.paper,
     },
-  }));
+}));
 
 function TodoList({ todos, toggleComplete, removeTodo, editTodo }) {
     const classes = useStyles();
