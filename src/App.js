@@ -13,6 +13,7 @@ function App() {
 
   function addTodo(todo) {
     // need to prevent adding duplicate items
+    todo.task = todo.task.trim();
     let found = todos.find(item => item.task === todo.task)
     if(found)
       alert("Cannot add duplicate item")
